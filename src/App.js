@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Page2 from './pages/page2'
+import Page3 from './pages/page3'
+import Page4 from './pages/page4'
+import Page5 from './pages/page5'
+import Navbar from './components/Navbar'
+import BlogDetail from './components/BlogDetail'
+import { Route, Routes, useLocation } from 'react-router-dom'
 
 function App() {
+  const location = useLocation(); // Get current path
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <>
+    {location.pathname !== '/' && <Navbar />}
+    <Routes>
+          <Route path='/' element={<Page2 />} />
+          <Route path='/blog' element={<Page3 />} />
+          <Route path='/about' element={<Page4 />} />
+          <Route path='/contact' element={<Page5 />} />
+
+          <Route path="/blog/:id" element={<BlogDetail />} />
+    </Routes>
+  </>
   );
 }
 
