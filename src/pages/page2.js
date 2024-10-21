@@ -39,7 +39,7 @@ function Page2() {
 
   return (
     <motion.div 
-      className="p-4 min-h-screen flex flex-col items-center justify-center border border-black"
+      className="p-4 min-h-screen flex flex-col items-center justify-center"
       initial={{ opacity: 0 }} // Start with opacity 0
       animate={{ opacity: 1 }}  // Animate to opacity 1
       transition={{ duration: 1 }}  // Set the duration of the fade-in
