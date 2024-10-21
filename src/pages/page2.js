@@ -111,7 +111,7 @@ function Page2() {
           </a>
         </div>
 
-        {loading && <p>Loading blogs...</p>}
+        {loading && <p>Blogs are being pulled from a free hosting site... </p>}
         {error && <p>Error: {error}</p>}
       </div>
       <Footer/>
