@@ -9,7 +9,7 @@ function Page5() {
   const onSubmit = async (data) => {
     try {
       // Make a POST request to your backend API endpoint
-      const response = await fetch('http://localhost:5000/send-email', {
+      const response = await fetch('https://personal-website-api-vzi5.onrender.com/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

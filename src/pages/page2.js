@@ -14,7 +14,7 @@ function Page2() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch('http://localhost:5000/blogs');
+        const response = await fetch('https://personal-website-api-vzi5.onrender.com/blogs');
         if (!response.ok) {
           throw new Error('Failed to fetch blogs');
         }
