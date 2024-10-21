@@ -39,7 +39,7 @@ function Page5() {
       >
         <h1 style={{ fontFamily: 'EBGaramond, sans-serif' }} className="text-4xl font-bold mb-4 text-center">Send Me A Message</h1>
         <p style={{ fontFamily: 'AfacadFlux, sans-serif' }} className="text-left text-lg mb-4">
-          I'd love to chat and collaborate. Send me a message and I'll get back to you shortly. 
+          If you're interested in a website or just want to chat, send me a message and I'll get back to you shortly!
         </p>
         <form onSubmit={handleSubmit(onSubmit)} style={{ fontFamily: 'AfacadFlux, sans-serif' }} className="flex flex-col space-y-4 text-lg">
           <div>

@@ -52,12 +52,6 @@ function Page2() {
           A solo developer trying to help people and himself
         </p>
   
-        {/* Display loading message */}
-        {loading && <p>Loading blogs...</p>}
-        
-        {/* Display error message */}
-        {error && <p>Error: {error}</p>}
-  
         {/* Add the rest of your content here... */}
         <div className="flex justify-center space-x-8 mb-4">
           <a
@@ -107,7 +101,7 @@ function Page2() {
           </button>
           <a
             href="/contact"
-            className="group text-3xl text-gray-700 w-full"
+            className="group text-3xl text-gray-700 w-full mb-12"
             style={{ fontFamily: 'AfacadFlux, sans-serif' }}
           >
             <span className="relative inline-block w-full text-center">
@@ -116,6 +110,9 @@ function Page2() {
             </span>
           </a>
         </div>
+
+        {loading && <p>Loading blogs...</p>}
+        {error && <p>Error: {error}</p>}
       </div>
       <Footer/>
     </motion.div>
