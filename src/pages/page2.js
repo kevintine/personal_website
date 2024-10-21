@@ -14,22 +14,22 @@ function Page2() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch('http://localhost:5000/blogs'); // Adjust to your API endpoint
+        const response = await fetch('http://localhost:5000/blogs');
         if (!response.ok) {
           throw new Error('Failed to fetch blogs');
         }
         const data = await response.json();
         setBlogs(data);
-        console.log(blogs)
       } catch (error) {
         setError(error.message);
       } finally {
         setLoading(false);
       }
     };
-
-    fetchBlogs(); // Fetch blogs when the main page loads
-  }, []);
+  
+    fetchBlogs();
+  }, []); // You can keep the dependency array empty if blogs doesn't need to be watched
+  
 
   const handleBlogClick = () => {
     // Store blogs in localStorage or context if needed before navigating
@@ -40,9 +40,9 @@ function Page2() {
   return (
     <motion.div 
       className="p-4 min-h-screen flex flex-col items-center justify-center"
-      initial={{ opacity: 0 }} // Start with opacity 0
-      animate={{ opacity: 1 }}  // Animate to opacity 1
-      transition={{ duration: 1 }}  // Set the duration of the fade-in
+      initial={{ opacity: 0 }} 
+      animate={{ opacity: 1 }}  
+      transition={{ duration: 1 }}  
     >
       <div className="flex-grow flex flex-col items-center justify-center w-[500px]">
         <h1 style={{ fontFamily: 'EBGaramond, sans-serif' }} className="text-4xl font-semibold mb-1">
@@ -51,7 +51,14 @@ function Page2() {
         <p style={{ fontFamily: 'AfacadFlux-Light, sans-serif' }} className="text-2xl italic tracking-wide mb-8">
           A solo developer trying to help people and himself
         </p>
+  
+        {/* Display loading message */}
+        {loading && <p>Loading blogs...</p>}
         
+        {/* Display error message */}
+        {error && <p>Error: {error}</p>}
+  
+        {/* Add the rest of your content here... */}
         <div className="flex justify-center space-x-8 mb-4">
           <a
             href="https://www.linkedin.com/in/your-linkedin-username"
@@ -76,7 +83,7 @@ function Page2() {
             </span>
           </a>
         </div>
-
+  
         <div className="flex flex-col item-center space-y-4 w-full">
           <a
             href="/about"
@@ -89,7 +96,7 @@ function Page2() {
             </span>
           </a>
           <button
-            onClick={handleBlogClick} // Use button for Blog link
+            onClick={handleBlogClick}
             className="group text-3xl text-gray-700 w-full"
             style={{ fontFamily: 'AfacadFlux, sans-serif' }}
           >
@@ -113,6 +120,7 @@ function Page2() {
       <Footer/>
     </motion.div>
   );
+  
 }
 
 export default Page2;
