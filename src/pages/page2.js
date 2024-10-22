@@ -28,13 +28,11 @@ function Page2() {
     };
   
     fetchBlogs();
-  }, []); // You can keep the dependency array empty if blogs doesn't need to be watched
-  
+  }, []);
 
   const handleBlogClick = () => {
-    // Store blogs in localStorage or context if needed before navigating
-    localStorage.setItem('blogs', JSON.stringify(blogs)); // Example using localStorage
-    navigate('/blog'); // Navigate to the Blog page
+    localStorage.setItem('blogs', JSON.stringify(blogs));
+    navigate('/blog');
   };
 
   return (
@@ -44,15 +42,20 @@ function Page2() {
       animate={{ opacity: 1 }}  
       transition={{ duration: 1 }}  
     >
-      <div className="flex-grow flex flex-col items-center justify-center w-[500px]">
-        <h1 style={{ fontFamily: 'EBGaramond, sans-serif' }} className="text-4xl font-semibold mb-1">
+      <div className="flex-grow flex flex-col items-center justify-center w-full max-w-lg">
+        <h1 
+          style={{ fontFamily: 'EBGaramond, sans-serif' }} 
+          className="text-4xl font-semibold mb-1 text-center"
+        >
           My little slice of the internet
         </h1>
-        <p style={{ fontFamily: 'AfacadFlux-Light, sans-serif' }} className="text-2xl italic tracking-wide mb-8">
-          A solo developer trying to help people and himself
+        <p 
+          style={{ fontFamily: 'AfacadFlux-Light, sans-serif' }} 
+          className="text-2xl italic tracking-wide mb-8 text-center"
+        >
+          A solo developer helping people and himself
         </p>
-  
-        {/* Add the rest of your content here... */}
+
         <div className="flex justify-center space-x-8 mb-4">
           <a
             href="https://www.linkedin.com/in/your-linkedin-username"
@@ -77,47 +80,46 @@ function Page2() {
             </span>
           </a>
         </div>
-  
-        <div className="flex flex-col item-center space-y-4 w-full">
+
+        <div className="flex flex-col items-center space-y-4 w-full">
           <a
             href="/about"
-            className="group text-3xl text-gray-700 w-full"
+            className="group text-3xl text-gray-700 w-full text-center"
             style={{ fontFamily: 'AfacadFlux, sans-serif' }}
           >
-            <span className="relative inline-block w-full text-center">
+            <span className="relative inline-block">
               About
               <span className="absolute left-0 -bottom-1 w-0 h-1 bg-red-500 group-hover:w-full"></span>
             </span>
           </a>
           <button
             onClick={handleBlogClick}
-            className="group text-3xl text-gray-700 w-full"
+            className="group text-3xl text-gray-700 w-full text-center"
             style={{ fontFamily: 'AfacadFlux, sans-serif' }}
           >
-            <span className="relative inline-block w-full text-center">
+            <span className="relative inline-block">
               Blog
               <span className="absolute left-0 -bottom-1 w-0 h-1 bg-red-500 group-hover:w-full"></span>
             </span>
           </button>
           <a
             href="/contact"
-            className="group text-3xl text-gray-700 w-full mb-12"
+            className="group text-3xl text-gray-700 w-full mb-12 text-center"
             style={{ fontFamily: 'AfacadFlux, sans-serif' }}
           >
-            <span className="relative inline-block w-full text-center">
+            <span className="relative inline-block">
               Contact
               <span className="absolute left-0 -bottom-1 w-0 h-1 bg-red-500 group-hover:w-full"></span>
             </span>
           </a>
         </div>
 
-        {loading && <p>Blogs are being pulled from a free hosting site... </p>}
+        {loading && <p>Blogs loading...</p>}
         {error && <p>Error: {error}</p>}
       </div>
-      <Footer/>
+      <Footer />
     </motion.div>
   );
-  
 }
 
 export default Page2;
