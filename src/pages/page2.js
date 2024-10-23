@@ -26,7 +26,7 @@ function Page2() {
         setLoading(false);
       }
     };
-  
+
     fetchBlogs();
   }, []);
 
@@ -87,9 +87,9 @@ function Page2() {
             className="group text-3xl text-gray-700 w-full text-center"
             style={{ fontFamily: 'AfacadFlux, sans-serif' }}
           >
-            <span className="relative inline-block">
+            <span className="relative inline-block w-full">
               About
-              <span className="absolute left-0 -bottom-1 w-0 h-1 bg-red-500 group-hover:w-full"></span>
+              <span className="absolute left-0 -bottom-1 h-1 bg-red-500 transition-all duration-300 ease-in-out group-hover:w-full"></span>
             </span>
           </a>
           <button
@@ -97,9 +97,9 @@ function Page2() {
             className="group text-3xl text-gray-700 w-full text-center"
             style={{ fontFamily: 'AfacadFlux, sans-serif' }}
           >
-            <span className="relative inline-block">
+            <span className="relative inline-block w-full">
               Blog
-              <span className="absolute left-0 -bottom-1 w-0 h-1 bg-red-500 group-hover:w-full"></span>
+              <span className="absolute left-0 -bottom-1 h-1 bg-red-500 transition-all duration-300 ease-in-out group-hover:w-full"></span>
             </span>
           </button>
           <a
@@ -107,9 +107,9 @@ function Page2() {
             className="group text-3xl text-gray-700 w-full mb-12 text-center"
             style={{ fontFamily: 'AfacadFlux, sans-serif' }}
           >
-            <span className="relative inline-block">
+            <span className="relative inline-block w-full">
               Contact
-              <span className="absolute left-0 -bottom-1 w-0 h-1 bg-red-500 group-hover:w-full"></span>
+              <span className="absolute left-0 -bottom-1 h-1 bg-red-500 transition-all duration-300 ease-in-out group-hover:w-full"></span>
             </span>
           </a>
         </div>
