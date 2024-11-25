@@ -43,19 +43,19 @@ function Navbar() {
   return (
     <div 
       className={`z-50 bg-white text-gray-600 text-3xl flex items-center justify-start h-20 w-full fixed bottom-0 transition-transform duration-300 ${showNavbar ? 'translate-y-0' : 'translate-y-full'}`}
-      style={{ boxShadow: "0px -2px 1px rgba(0, 0, 0, 0.5)" }} // Custom shadow to make it stronger
+      style={{ boxShadow: "0px -2px 1px rgba(0, 0, 0, 0.2)" }} // Custom shadow to make it stronger
     >
       <div className="flex-grow flex justify-between max-w-screen-xl mx-auto px-4"> {/* Added padding to the sides */}
         {isMobile ? (
           <>
             {/* Mobile hamburger icon */}
-            <button onClick={toggleMenu} className="text-3xl">
+            <button onClick={toggleMenu} className="text-3xl p-2">
               <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
             </button>
 
             {/* Mobile menu - initially hidden */}
             <div
-              className={`absolute bottom-20 left-0 w-full bg-white p-6 transition-transform duration-500 ease-in-out transform ${
+              className={`absolute bottom-20 left-0 w-full bg-white p-2 transition-transform duration-500 ease-in-out transform ${
                 menuOpen ? 'translate-y-0' : 'translate-y-full'
               }`}
             >
@@ -80,11 +80,12 @@ function Navbar() {
                   <Link
                     onClick={toggleMenu}
                     style={{ fontFamily: 'AfacadFlux, sans-serif' }}
-                    className="hover:text-red-500"
+                    className="group hover:text-red-500"
                     to={"/about"}
                   >
-                    About
+                      About
                   </Link>
+
                   <Link
                     onClick={toggleMenu}
                     style={{ fontFamily: 'AfacadFlux, sans-serif' }}
@@ -103,35 +104,48 @@ function Navbar() {
             <div className="space-x-10">
               <Link
                 style={{ fontFamily: 'AfacadFlux, sans-serif' }}
-                className="text-black hover:text-red-500"
+                className="group"
                 to={"/"}
               >
-                Home
+                <span className="relative inline-block">
+                  Home
+                  <span className="absolute left-0 -bottom-1 w-0 h-1 bg-red-500 group-hover:w-full"></span>
+                </span>
               </Link>
               <Link
                 style={{ fontFamily: 'AfacadFlux, sans-serif' }}
-                className="hover:text-red-500"
+                className="group"
                 to={"/blog"}
               >
-                Blog
+                <span className="relative inline-block">
+                  Blog
+                  <span className="absolute left-0 -bottom-1 w-0 h-1 bg-red-500 group-hover:w-full"></span>
+                </span>
               </Link>
               <Link
                 style={{ fontFamily: 'AfacadFlux, sans-serif' }}
-                className="hover:text-red-500"
+                className="group"
                 to={"/about"}
               >
-                About
+                <span className="relative inline-block">
+                  About
+                  <span className="absolute left-0 -bottom-1 w-0 h-1 bg-red-500 group-hover:w-full"></span>
+                </span>
               </Link>
             </div>
             <div>
               <Link
                 style={{ fontFamily: 'AfacadFlux, sans-serif' }}
-                className="hover:text-red-500"
+                className="group"
                 to={"/contact"}
               >
-                Contact
+                <span className="relative inline-block">
+                  Contact
+                  <span className="absolute left-0 -bottom-1 w-0 h-1 bg-red-500 group-hover:w-full"></span>
+                </span>
               </Link>
             </div>
+
           </>
         )}
       </div>

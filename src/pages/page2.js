@@ -58,7 +58,7 @@ function Page2() {
 
         <div className="flex justify-center space-x-8 mb-4">
           <a
-            href="https://www.linkedin.com/in/your-linkedin-username"
+            href="https://www.linkedin.com/in/kevin-tran-854b90168/"
             target="_blank"
             rel="noopener noreferrer"
             className="group text-4xl text-black hover:text-blue-600"
@@ -69,7 +69,7 @@ function Page2() {
             </span>
           </a>
           <a
-            href="https://github.com/your-github-username"
+            href="https://github.com/kevintine"
             target="_blank"
             rel="noopener noreferrer"
             className="group text-4xl text-black hover:text-blue-600"

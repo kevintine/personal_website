@@ -7,17 +7,17 @@ function Page4() {
   return (
     <div 
       style={{ scrollbarGutter: "stable" }} 
-      className="p-4 md:p-16 lg:p-32 flex flex-col items-center overflow-x-hidden"
+      className="p-6 flex flex-col items-center overflow-x-hidden"
     >
       <motion.div 
-        className="max-w-[900px] w-full p-4 md:p-8 flex-grow flex flex-col items-start justify-center"
+        className="w-full max-w-[900px] mx-auto p-4 md:p-8 flex-grow flex flex-col items-start justify-center"
         initial={{ opacity: 0 }} 
         animate={{ opacity: 1 }}  
-        transition={{ duration: 1 }}  
+        transition={{ duration: 1 }}
       >
         <h1 
           style={{ fontFamily: 'EBGaramond, sans-serif' }} 
-          className="text-3xl md:text-4xl font-bold mb-4 md:mb-8"
+          className="text-3xl md:text-4xl font-bold mb-4 md:mb-8 text-center md:text-left"
         >
           About
         </h1>
@@ -53,10 +53,10 @@ function Page4() {
             </span>
           </a>
           &nbsp;part time while also freelancing websites for 
-          individuals and businesses. I design and implement full stack website applications for busineses and individuals.
+          individuals and businesses. I design and implement full stack website applications for businesses and individuals.
           Send me a message about anything! I'd love to chat. <br/><br/>
           
-          I've been machining since 2018 where I really developed a passion for automated systems and all the possibilites
+          I've been machining since 2018 where I really developed a passion for automated systems and all the possibilities
           that come with it. I went to Seneca College in 2021 for computer programming and&nbsp;
           <a 
             href="https://learner.mycreds.ca/r/sharelink/56633dab-b720-4e8f-be19-15cb97fdfee6/5d2e0692-6392-47ca-b2ad-3a55fd111cf3" 
