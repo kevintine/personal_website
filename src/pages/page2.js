@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import Footer from '../components/Footer';
@@ -6,32 +6,9 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
 function Page2() {
-  const [blogs, setBlogs] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const navigate = useNavigate(); // Hook to navigate programmatically
 
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        const response = await fetch('https://personal-website-api-vzi5.onrender.com/blogs');
-        if (!response.ok) {
-          throw new Error('Failed to fetch blogs');
-        }
-        const data = await response.json();
-        setBlogs(data);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchBlogs();
-  }, []);
-
   const handleBlogClick = () => {
-    localStorage.setItem('blogs', JSON.stringify(blogs));
     navigate('/blog');
   };
 
@@ -113,9 +90,6 @@ function Page2() {
             </span>
           </a>
         </div>
-
-        {loading && <p>Blogs loading...</p>}
-        {error && <p>Error: {error}</p>}
       </div>
       <Footer />
     </motion.div>
