@@ -16,7 +16,7 @@ function Page3() {
         setLoading(false);
       } else {
         try {
-          const response = await fetch("http://localhost:5000/blogs"); // Update with your backend endpoint
+          const response = await fetch("https://personal-website-api-vzi5.onrender.com/blogs"); // Update with your backend endpoint
           if (!response.ok) throw new Error("Failed to fetch blogs");
           const data = await response.json();
           setBlogs(data);
