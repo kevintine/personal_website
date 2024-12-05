@@ -100,6 +100,7 @@ function Page3() {
                                 {formatDate(blog.dateCreated)}
                               </p>
                             </div>
+                              <span className="absolute left-0 -bottom-1 w-0 h-1 bg-red-500 group-hover:w-full"></span>
                           </span>
                         </a>
                       ))}

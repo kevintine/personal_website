@@ -14,6 +14,24 @@ const MarkdownWrapper = styled.div`
   p {
     margin: 1.5em 0; /* Adds space between paragraphs */
   }
+
+  ul, ol {
+    margin-left: 2rem; /* Indent lists for better readability */
+    padding-left: 1.5rem; /* Adds space for bullets or numbers */
+  }
+
+  ul {
+    list-style-type: disc; /* Display bullet points */
+  }
+
+  ol {
+    list-style-type: decimal; /* Display numbers for ordered lists */
+  }
+
+  li {
+    margin-bottom: 0.5rem; /* Add spacing between list items */
+    line-height: 1.6; /* Improve readability of multiline list items */
+  }
 `;
 
 function BlogDetail() {
