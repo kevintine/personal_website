@@ -8,8 +8,11 @@ function Page3() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Apply styles for the scrollbar
+    document.documentElement.style.overflowY = "scroll"; // Permanent vertical scrollbar
+    document.documentElement.style.overflowX = "hidden"; // Prevent horizontal scrollbar
+
     const fetchBlogs = async () => {
-      // Check sessionStorage for cached blogs
       const cachedBlogs = sessionStorage.getItem("cachedBlogs");
       if (cachedBlogs) {
         setBlogs(JSON.parse(cachedBlogs));
@@ -21,7 +24,6 @@ function Page3() {
           const data = await response.json();
           setBlogs(data);
 
-          // Cache blogs in sessionStorage
           sessionStorage.setItem("cachedBlogs", JSON.stringify(data));
         } catch (err) {
           setError(err.message);
@@ -34,16 +36,13 @@ function Page3() {
     fetchBlogs();
   }, []);
 
-  // Helper function to format the date (e.g., "Mar 3")
   const formatDate = (dateString) => {
     const options = { month: "short", day: "numeric" };
     return new Date(dateString).toLocaleDateString("en-US", options);
   };
 
-  // Helper function to extract the year
   const getYear = (dateString) => new Date(dateString).getFullYear();
 
-  // Group blogs by year
   const groupedBlogs = blogs.reduce((acc, blog) => {
     const year = getYear(blog.dateCreated);
     acc[year] = acc[year] || [];
@@ -74,7 +73,7 @@ function Page3() {
           ) : (
             <div className="mt-4 w-full">
               {Object.keys(groupedBlogs)
-                .sort((a, b) => b - a) // Sort years in descending order
+                .sort((a, b) => b - a)
                 .map((year) => (
                   <div
                     key={year}
@@ -92,15 +91,18 @@ function Page3() {
                           className="block border-b border-dotted border-gray-700 tracking-wide"
                         >
                           <span className="relative inline-block group w-full p-2 md:p-4">
-                            <div className="flex justify-between items-center w-full">
-                              <h2 className="text-xl md:text-3xl text-gray-900">
+                            <div
+                              className="flex justify-between items-center w-full"
+                              style={{ fontFamily: "Roboto, sans-serif" }}
+                            >
+                              <h2 className="md:text-2xl text-gray-900">
                                 {blog.title}
                               </h2>
-                              <p className="text-sm md:text-lg text-gray-600">
+                              <p className="text-sm md:text-base text-gray-600">
                                 {formatDate(blog.dateCreated)}
                               </p>
                             </div>
-                              <span className="absolute left-0 -bottom-1 w-0 h-1 bg-red-500 group-hover:w-full"></span>
+                            <span className="absolute left-0 -bottom-1 w-0 h-1 bg-red-500 group-hover:w-full"></span>
                           </span>
                         </a>
                       ))}

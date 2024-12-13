@@ -31,11 +31,11 @@ function Page4() {
             style={{ fontFamily: 'AfacadFlux, sans-serif' }} 
             className="text-center text-gray-600"
           >
-            Tobermory Summer 2022
+            "Look a naked guy in the water!" - "Tobermory Summer 2022
           </p>
         </div>
         <p 
-          style={{ fontFamily: 'AfacadFlux, sans-serif' }} 
+          style={{ fontFamily: 'Roboto, sans-serif' }} 
           className="text-left tracking-wide text-sm md:text-lg"
         >
           Hey There!<br/><br/>
@@ -79,7 +79,7 @@ function Page4() {
         <hr className="border-t-2 border-gray-300 my-8 w-[90%] mx-auto" />
 
         <p 
-          style={{ fontFamily: 'AfacadFlux, sans-serif' }} 
+          style={{ fontFamily: 'Roboto, sans-serif' }} 
           className="text-left tracking-wide text-sm md:text-lg"
         >
           My current projects are:<br/><br/>

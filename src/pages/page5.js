@@ -38,7 +38,7 @@ function Page5() {
         transition={{ duration: 1 }}     // 1-second animation
       >
         <h1 style={{ fontFamily: 'EBGaramond, sans-serif' }} className="text-4xl font-bold mb-4 text-center">Send Me A Message</h1>
-        <p style={{ fontFamily: 'AfacadFlux, sans-serif' }} className="text-left text-lg mb-4">
+        <p style={{ fontFamily: 'Roboto, sans-serif' }} className="text-left text-lg mb-4">
           If you're interested in a website or just want to chat, send me a message and I'll get back to you shortly!
         </p>
         <form onSubmit={handleSubmit(onSubmit)} style={{ fontFamily: 'AfacadFlux, sans-serif' }} className="flex flex-col space-y-4 text-lg">
