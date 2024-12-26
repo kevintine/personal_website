@@ -31,7 +31,7 @@ function Page4() {
             style={{ fontFamily: 'AfacadFlux, sans-serif' }} 
             className="text-center text-gray-600"
           >
-            "Look a naked guy in the water!" - "Tobermory Summer 2022
+            Tobermory Summer 2022
           </p>
         </div>
         <p 

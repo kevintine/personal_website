@@ -24,7 +24,7 @@ function Page2() {
           style={{ fontFamily: 'EBGaramond, sans-serif' }} 
           className="text-4xl font-semibold mb-1 text-center"
         >
-          xXthekevintran27Xx
+          Kevin Tran
         </h1>
         <p 
           style={{ fontFamily: 'AfacadFlux-Light, sans-serif' }} 
