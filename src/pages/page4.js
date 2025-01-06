@@ -108,17 +108,17 @@ function Page4() {
           <ul className="list-disc ml-6">
             <li>
               <a 
-                href="https://github.com/kevintine/PRJ566" 
+                href="https://github.com/kevintine/Python-Trading-Bot" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="relative text-black hover:text-black group"
               >
                 <span className="relative inline-block">
-                  Bowling Alley Web App
+                  Python Candlsticks Analysis Chart
                   <span className="absolute left-0 bottom-1 w-0 h-1 bg-red-400 w-full opacity-700"></span>
                 </span>
               </a>
-              &nbsp;: Seneca final year capstone group project. Big website that used a lot of different tech to accomplish
+              &nbsp;: This is run on a flask app and it can identify different candlestick patterns on any stock
             </li>
             <li>
               <a 
@@ -137,7 +137,7 @@ function Page4() {
           </ul>
 
           <br/>
-          I haven't been working on my projects recently because I've been quite busy outside of coding, but I will be getting back to them soon enough.
+          I'm currently having issues deploying my Python Trading Bot online, issues with the TA-Lib library AND ITS .whl file, please send me an email if you can help with that. 
         </p>
       </motion.div>
 

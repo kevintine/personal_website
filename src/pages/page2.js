@@ -30,7 +30,7 @@ function Page2() {
           style={{ fontFamily: 'AfacadFlux-Light, sans-serif' }} 
           className="text-2xl italic tracking-wide mb-8 text-center"
         >
-          Just some cool guy building stuff on the internet 
+          Welcome to my little slice of the internet
         </p>
 
         <div className="flex justify-center space-x-8 mb-4">
