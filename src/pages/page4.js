@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Footer from '../components/Footer';
-import main from '../assets/images/buddyandi2.JPG';
 
 function Page4() {
   return (
