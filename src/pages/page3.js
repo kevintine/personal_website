@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Footer from "../components/Footer";
+import SquareLoader from 'react-spinners/SquareLoader';
 
 function Page3() {
   const [blogs, setBlogs] = useState([]);
@@ -67,7 +68,9 @@ function Page3() {
           </h1>
 
           {loading ? (
-            <p>Loading blogs...</p>
+            <div className="fixed inset-0 flex items-center justify-center bg-white">
+              <SquareLoader color="#ff2b2b" size={10} />
+            </div>
           ) : error ? (
             <p>Error: {error}</p>
           ) : (

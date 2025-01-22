@@ -21,7 +21,7 @@ function Page4() {
         >
           About
         </h1>
-        <div className="w-full mb-4 md:mb-6">
+        {/* <div className="w-full mb-4 md:mb-6">
           <img
             src={main}  
             alt="Welcome Banner"
@@ -33,7 +33,7 @@ function Page4() {
           >
             Tobermory Summer 2022
           </p>
-        </div>
+        </div> */}
         <p 
           style={{ fontFamily: 'Roboto, sans-serif' }} 
           className="text-left tracking-wide text-sm md:text-lg"
@@ -52,8 +52,7 @@ function Page4() {
               <span className="absolute left-0 bottom-1 w-0 h-1 bg-red-400 w-full opacity-700"></span>
             </span>
           </a>
-          &nbsp;part time while also freelancing websites for 
-          individuals and businesses. I design and implement full stack website applications for businesses and individuals.
+          &nbsp; while working on my own projects and learning new things in the mean while. 
           Send me a message about anything! I'd love to chat. <br/><br/>
           
           I've been machining since 2018 where I really developed a passion for automated systems and all the possibilities
@@ -70,7 +69,7 @@ function Page4() {
             </span>
           </a>
           . I've been working 
-          as a freelance developer ever since.  <br/><br/>
+          working primarily on technologies such as React, Node.js, and Python.  <br/><br/>
 
           This blog is a collection of my thoughts, tutorials, and news I shared as an individual. I may touch on
           sports, machining tricks, and of course developer struggles.
@@ -87,6 +86,29 @@ function Page4() {
           <ul className="list-disc ml-6">
             <li>
               <a 
+                href="https://github.com/kevintine/Python-Trading-Bot" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="relative text-black hover:text-black group"
+              >
+                <span className="relative inline-block">
+                  Python Candlesticks Analysis Chart
+                  <span className="absolute left-0 bottom-1 w-0 h-1 bg-red-400 w-full opacity-700"></span>
+                </span>
+              </a>
+              &nbsp;: Able to identify any type of candlestick pattern on any stock during any timeframe. 
+            </li>
+            <li>
+              Currently building a full stack website for my employer using React, Node.js, Express, and Tailwind CSS.
+            </li>
+          </ul>
+
+          <br/>
+          A few others:<br/><br/>
+
+          <ul className="list-disc ml-6">
+            <li>
+              <a 
                 href="https://github.com/kevintine/Fantasy-BBall-App" 
                 target="_blank" 
                 rel="noopener noreferrer"
@@ -97,28 +119,7 @@ function Page4() {
                   <span className="absolute left-0 bottom-1 w-0 h-1 bg-red-400 w-full opacity-700"></span>
                 </span>
               </a>
-              &nbsp;: Teams and trade analysis based on player statistics. Hoping to win my league this year
-            </li>
-            <li>Stock Market Pattern Seeker: Choose and identify different candlestick patterns in different stocks</li>
-          </ul>
-
-          <br/>
-          A few others:<br/><br/>
-
-          <ul className="list-disc ml-6">
-            <li>
-              <a 
-                href="https://github.com/kevintine/Python-Trading-Bot" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="relative text-black hover:text-black group"
-              >
-                <span className="relative inline-block">
-                  Python Candlsticks Analysis Chart
-                  <span className="absolute left-0 bottom-1 w-0 h-1 bg-red-400 w-full opacity-700"></span>
-                </span>
-              </a>
-              &nbsp;: This is run on a flask app and it can identify different candlestick patterns on any stock
+              &nbsp;: Teams and trade analysis based on player statistics. Hoping to win my league this year.
             </li>
             <li>
               <a 
@@ -137,7 +138,7 @@ function Page4() {
           </ul>
 
           <br/>
-          I'm currently having issues deploying my Python Trading Bot online, issues with the TA-Lib library AND ITS .whl file, please send me an email if you can help with that. 
+          I'm currently having issues deploying my Python Trading Bot online, issues with the TA-Lib library and the .whl file, let me know if you can help with that. I might have to pick up on how to use Docker.  
         </p>
       </motion.div>
 
