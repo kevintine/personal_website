@@ -68,8 +68,14 @@ function Page3() {
           </h1>
 
           {loading ? (
-            <div className="fixed inset-0 flex items-center justify-center bg-white">
-              <SquareLoader color="#ff2b2b" size={10} />
+            <div className="fixed inset-0 flex flex-col items-center justify-center bg-white">
+              {/* Loader */}
+              <SquareLoader color="#ff2b2b" size={50} />
+              
+              {/* Message */}
+              <p className="mt-4 text-sm text-center" style={{ color: "#ff2b2b" }}>
+                Blogs are hosted on a free service backend. Please be patient!
+              </p>
             </div>
           ) : error ? (
             <p>Error: {error}</p>
