@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Footer from "../components/Footer";
 import SquareLoader from 'react-spinners/SquareLoader';
@@ -12,9 +13,9 @@ function Page3() {
     // Apply styles for the scrollbar
     document.documentElement.style.overflowY = "scroll"; // Permanent vertical scrollbar
     document.documentElement.style.overflowX = "hidden"; // Prevent horizontal scrollbar
-
+  
     const fetchBlogs = async () => {
-      const cachedBlogs = sessionStorage.getItem("cachedBlogs");
+      const cachedBlogs = localStorage.getItem("blogs");
       if (cachedBlogs) {
         setBlogs(JSON.parse(cachedBlogs));
         setLoading(false);
@@ -24,8 +25,9 @@ function Page3() {
           if (!response.ok) throw new Error("Failed to fetch blogs");
           const data = await response.json();
           setBlogs(data);
-
-          sessionStorage.setItem("cachedBlogs", JSON.stringify(data));
+  
+          localStorage.setItem("blogs", JSON.stringify(data));
+          console.log("Blogs saved to localStorage:", data);
         } catch (err) {
           setError(err.message);
         } finally {
@@ -33,9 +35,10 @@ function Page3() {
         }
       }
     };
-
+  
     fetchBlogs();
   }, []);
+  
 
   const formatDate = (dateString) => {
     const options = { month: "short", day: "numeric" };
@@ -94,10 +97,10 @@ function Page3() {
                     </div>
                     <div className="flex-grow">
                       {groupedBlogs[year].map((blog) => (
-                        <a
-                          key={blog._id}
-                          href={`/blog/${blog._id}`}
-                          className="block border-b border-dotted border-gray-700 tracking-wide"
+                        <Link
+                        key={blog._id}
+                        to={`/blog/${blog._id}`}
+                        className="block border-b border-dotted border-gray-700 tracking-wide"
                         >
                           <span className="relative inline-block group w-full p-2 md:p-4">
                             <div
@@ -113,7 +116,7 @@ function Page3() {
                             </div>
                             <span className="absolute left-0 -bottom-1 w-0 h-1 bg-red-500 group-hover:w-full"></span>
                           </span>
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>

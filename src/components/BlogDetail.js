@@ -1,96 +1,129 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';  
-import { motion } from 'framer-motion'; 
-import Footer from '../components/Footer';
-import ReactMarkdown from 'react-markdown';  
-import styled from 'styled-components';
-import SquareLoader from 'react-spinners/SquareLoader';
+import React, { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import Footer from "../components/Footer";
+import ReactMarkdown from "react-markdown";
+import styled from "styled-components";
+import SquareLoader from "react-spinners/SquareLoader";
 
 const MarkdownWrapper = styled.div`
-  font-family: 'AfacadFlux', sans-serif;
+  font-family: "AfacadFlux", sans-serif;
   font-size: 1.3rem;
   line-height: 1.5;
   margin-bottom: 2rem;
 
   p {
-    margin: 1.5em 0; /* Adds space between paragraphs */
+    margin: 1.5em 0;
   }
 
-  ul, ol {
-    margin-left: 2rem; /* Indent lists for better readability */
-    padding-left: 1.5rem; /* Adds space for bullets or numbers */
+  ul,
+  ol {
+    margin-left: 2rem;
+    padding-left: 1.5rem;
   }
 
   ul {
-    list-style-type: disc; /* Display bullet points */
+    list-style-type: disc;
   }
 
   ol {
-    list-style-type: decimal; /* Display numbers for ordered lists */
+    list-style-type: decimal;
   }
 
   li {
-    margin-bottom: 0.5rem; /* Add spacing between list items */
-    line-height: 1.6; /* Improve readability of multiline list items */
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
   }
 `;
 
 function BlogDetail() {
-  const { id } = useParams();  
+  const { id } = useParams();
   const [blog, setBlog] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const storedBlogs = JSON.parse(localStorage.getItem('blogs'));
-    if (storedBlogs) {
-      const blogPost = storedBlogs.find(blog => blog._id === id);
-      setBlog(blogPost);
-    }
+    const fetchBlog = async () => {
+      try {
+        // Check localStorage for the blog
+        const storedBlogs = JSON.parse(localStorage.getItem("blogs"));
+        if (storedBlogs) {
+          const blogPost = storedBlogs.find((blog) => blog._id === id);
+          if (blogPost) {
+            setBlog(blogPost);
+            setLoading(false);
+            return;
+          }
+        }
+
+        // Fallback: Fetch the blog from the backend
+        const response = await fetch(
+          `https://personal-website-api-vzi5.onrender.com/blogs/${id}`
+        );
+        if (!response.ok) throw new Error("Failed to fetch blog from the backend.");
+
+        const data = await response.json();
+        setBlog(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlog();
   }, [id]);
 
-  if (!blog) return <div className="fixed inset-0 flex flex-col items-center justify-center bg-white">
-  {/* Loader */}
-  <SquareLoader color="#ff2b2b" size={50} />
-  
-  {/* Message */}
-  <p className="mt-4 text-sm text-center" style={{ color: "#ff2b2b" }}>
-    Blogs are hosted on a free service backend. Please be patient!
-  </p>
-</div>;
+  if (loading)
+    return (
+      <div className="fixed inset-0 flex flex-col items-center justify-center bg-white">
+        <SquareLoader color="#ff2b2b" size={50} />
+        <p className="mt-4 text-sm text-center" style={{ color: "#ff2b2b" }}>
+          Blogs are hosted on a free service backend. Please be patient!
+        </p>
+      </div>
+    );
+
+  if (error)
+    return (
+      <div className="fixed inset-0 flex flex-col items-center justify-center bg-white">
+        <p className="text-center text-red-500">{error}</p>
+        <Link to="/blog" className="mt-4 text-blue-500 hover:text-blue-700">
+          Back to Blog
+        </Link>
+      </div>
+    );
 
   return (
-    <motion.div 
+    <motion.div
       className="p-6 flex flex-col items-center"
-      initial={{ opacity: 0 }} 
-      animate={{ opacity: 1 }}  
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      {/* Container to center content with a max-width */}
       <div className="w-full max-w-[900px] mx-auto p-4 md:p-8 flex-grow flex flex-col items-start justify-center">
-        <h1 
-          style={{ fontFamily: 'EBGaramond, sans-serif' }} 
+        <h1
+          style={{ fontFamily: "EBGaramond, sans-serif" }}
           className="text-3xl sm:text-4xl font-bold mb-4 text-center sm:text-left"
         >
           {blog.title}
         </h1>
-        <p 
-          style={{ fontFamily: 'AfacadFlux, sans-serif' }} 
+        <p
+          style={{ fontFamily: "AfacadFlux, sans-serif" }}
           className="text-base sm:text-lg text-gray-400 mb-4 text-center sm:text-left"
         >
           {new Date(blog.dateCreated).toLocaleDateString()}
         </p>
 
         <MarkdownWrapper className="text-base sm:text-lg">
-          <ReactMarkdown>
-            {blog.content}
-          </ReactMarkdown>
+          <ReactMarkdown>{blog.content}</ReactMarkdown>
         </MarkdownWrapper>
 
         <Link to="/blog" className="mt-8 flex items-center text-blue-500 hover:text-blue-700">
-          <span className="mr-2">&#8592;</span> 
-          <span>Back to Blog</span>
+          <span className="mr-2">&#8592;</span>
+          <span>Go Back</span>
         </Link>
       </div>
-
       <Footer />
     </motion.div>
   );
