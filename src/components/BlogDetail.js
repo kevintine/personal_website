@@ -45,32 +45,34 @@ function BlogDetail() {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        // Check localStorage for the blog
-        const storedBlogs = JSON.parse(localStorage.getItem("blogs"));
-        if (storedBlogs) {
-          const blogPost = storedBlogs.find((blog) => blog._id === id);
-          if (blogPost) {
-            setBlog(blogPost);
-            setLoading(false);
-            return;
-          }
-        }
-
-        // Fallback: Fetch the blog from the backend
-        const response = await fetch(
-          `https://personal-website-api-vzi5.onrender.com/blogs/${id}`
-        );
+        setLoading(true);
+        setError(null);
+  
+        // Try fetching directly from the backend
+        const response = await fetch(`https://personal-website-api-vzi5.onrender.com/blogs/${id}`);
         if (!response.ok) throw new Error("Failed to fetch blog from the backend.");
-
         const data = await response.json();
         setBlog(data);
       } catch (err) {
-        setError(err.message);
+        console.error("Fetch failed, trying localStorage...", err);
+  
+        // Try localStorage as a backup
+        const storedBlogs = JSON.parse(localStorage.getItem("blogs"));
+        if (storedBlogs) {
+          const blogPost = storedBlogs.find((b) => b._id === id);
+          if (blogPost) {
+            setBlog(blogPost);
+            return;
+          }
+        }
+  
+        // Still failed
+        setError("Blog not found.");
       } finally {
         setLoading(false);
       }
     };
-
+  
     fetchBlog();
   }, [id]);
 

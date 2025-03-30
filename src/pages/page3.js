@@ -1,44 +1,46 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import Footer from "../components/Footer";
-import SquareLoader from 'react-spinners/SquareLoader';
+import SquareLoader from "react-spinners/SquareLoader";
 
 function Page3() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const location = useLocation(); // Track route changes
 
   useEffect(() => {
-    // Apply styles for the scrollbar
-    document.documentElement.style.overflowY = "scroll"; // Permanent vertical scrollbar
-    document.documentElement.style.overflowX = "hidden"; // Prevent horizontal scrollbar
-  
+    document.documentElement.style.overflowY = "scroll";
+    document.documentElement.style.overflowX = "hidden";
+
     const fetchBlogs = async () => {
-      const cachedBlogs = localStorage.getItem("blogs");
-      if (cachedBlogs) {
-        setBlogs(JSON.parse(cachedBlogs));
-        setLoading(false);
-      } else {
-        try {
-          const response = await fetch("https://personal-website-api-vzi5.onrender.com/blogs"); // Update with your backend endpoint
-          if (!response.ok) throw new Error("Failed to fetch blogs");
-          const data = await response.json();
-          setBlogs(data);
-  
-          localStorage.setItem("blogs", JSON.stringify(data));
-          console.log("Blogs saved to localStorage:", data);
-        } catch (err) {
-          setError(err.message);
-        } finally {
-          setLoading(false);
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await fetch("https://personal-website-api-vzi5.onrender.com/blogs");
+        if (!response.ok) throw new Error("Failed to fetch blogs");
+
+        const data = await response.json();
+        setBlogs(data);
+
+        // Store in localStorage
+        localStorage.setItem("blogs", JSON.stringify(data));
+      } catch (err) {
+        setError(err.message);
+
+        // Optional: fallback to localStorage if fetch fails
+        const stored = localStorage.getItem("blogs");
+        if (stored) {
+          setBlogs(JSON.parse(stored));
         }
+      } finally {
+        setLoading(false);
       }
     };
-  
+
     fetchBlogs();
-  }, []);
-  
+  }, [location.pathname]); // re-fetch when navigating to this page
 
   const formatDate = (dateString) => {
     const options = { month: "short", day: "numeric" };
@@ -72,10 +74,7 @@ function Page3() {
 
           {loading ? (
             <div className="fixed inset-0 flex flex-col items-center justify-center bg-white">
-              {/* Loader */}
               <SquareLoader color="#ff2b2b" size={50} />
-              
-              {/* Message */}
               <p className="mt-4 text-sm text-center" style={{ color: "#ff2b2b" }}>
                 Blogs are hosted on a free service backend. Please be patient!
               </p>
@@ -98,9 +97,9 @@ function Page3() {
                     <div className="flex-grow">
                       {groupedBlogs[year].map((blog) => (
                         <Link
-                        key={blog._id}
-                        to={`/blog/${blog._id}`}
-                        className="block border-b border-dotted border-gray-700 tracking-wide"
+                          key={blog._id}
+                          to={`/blog/${blog._id}`}
+                          className="block border-b border-dotted border-gray-700 tracking-wide"
                         >
                           <span className="relative inline-block group w-full p-2 md:p-4">
                             <div
@@ -125,7 +124,6 @@ function Page3() {
           )}
         </motion.div>
       </div>
-
       <Footer />
     </div>
   );
